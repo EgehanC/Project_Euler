@@ -1,5 +1,6 @@
-# Problem 9
+### Problem 9
 from math import sqrt
+
 
 def pythagorean_triplet(n):
     for b in range(n):
@@ -12,3 +13,33 @@ def pythagorean_triplet(n):
                 break
 
 pythagorean_triplet(1000)
+
+### Problem 10
+
+
+def isPrimeNumber(n):
+    dividers_of_x = [1, n]
+    for i in range(3, round(n ** (1 / 2)+1), 2):
+        if n % i == 0:
+            while n % i == 0:
+                n /= i
+            dividers_of_x.append(i)
+        if n == 1:
+            break
+
+    if len(dividers_of_x) > 2:
+        return False
+    else:
+        return True
+
+
+def sum_of_primes():
+    sum = 2
+    for i in range(3, 2000000, 2):
+        if isPrimeNumber(i):
+            sum += i
+    print(sum)
+
+
+sum_of_primes()
+print("test")
