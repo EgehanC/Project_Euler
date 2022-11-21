@@ -3,7 +3,6 @@ import time
 
 
 def main():
-    import time
 
     # time at the start of execution
     start = time.time()
