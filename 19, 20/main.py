@@ -1,4 +1,5 @@
 import datetime
+from math import factorial
 
 
 def count_first_sundays():
@@ -15,3 +16,15 @@ def count_first_sundays():
 # count_first_sundays()
 
 
+def dig_sum():
+    n = 100
+    fact_n = factorial(n)
+
+    str_fact_n = str(fact_n)
+    sum = 0
+    for i in str_fact_n:
+        sum += int(i)
+
+    print(sum)
+
+# dig_sum()
