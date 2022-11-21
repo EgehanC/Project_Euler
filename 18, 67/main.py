@@ -1,10 +1,10 @@
 ### Problem 18
 import time
 
-start = time.time()
-
 
 def main():
+    start = time.time()
+
     with open('18.txt') as f:
         # All the numbers in the file
         number = f.read()
