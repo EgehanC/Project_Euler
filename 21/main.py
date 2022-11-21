@@ -18,28 +18,33 @@ def divisors(n):
     return [d for d in divisor_gen(n)]
 
 
-def sum_divisors(n):
-    sum = 0
-    divs = divisors(n)
-    if divs:
+def sum_divisors(a, b):
+    div_sum_list = {}
+    for i in range(a, b):
+        sum = 0
+        divs = divisors(i)
         divs.pop()
-    for divisor in divs:
-        sum += divisor
-    return sum
+        for divisor in divs:
+            sum += divisor
+        div_sum_list[i] = sum
+
+    return div_sum_list
 
 
 def main():
-    div_sum_list = {}
-    for i in range(0, 10001):
-        div_sum = sum_divisors(i)
-        div_sum_list[i] = div_sum
-    sum = 0
+    div_sum_list = sum_divisors(1, 10001)
+    amicable_nums = []
     for j in div_sum_list:
-        if div_sum_list[j] in div_sum_list:
-            if j == div_sum_list[div_sum_list[j]]:
-                sum += j
-                sum += div_sum_list[j]
-    print(sum)
+        if div_sum_list[j] in div_sum_list and j != div_sum_list[j] and div_sum_list[div_sum_list[j]] == j:
+            amicable_nums.append(j)
+    # Calculating sum
+    sum = 0
+    for num in amicable_nums:
+        sum += num
+    # Printing results
+    print(f"Amicable numbers: {amicable_nums}")
+    print(f"Sum: {sum}")
+
 
 main()
 end = time.time()
