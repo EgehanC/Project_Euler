@@ -32,7 +32,7 @@ def main():
     # printing the output
     print(f'Found {number[0][0]} in {counter} iterations')
     end = time.time()
-    print(end - start)
+    print("Time:", round(end - start, 5), "sec")
 
 
 main()
