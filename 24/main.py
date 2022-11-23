@@ -14,15 +14,15 @@ def nth_lexicographic_perm(char_list, n):
 
     # creating the wanted permutation
     while len(nth_perm) < total_chars:
-        
-        k = round(n / perms_by_number)
+
+        k = round(n / perms_by_number)  # <== Problem
 
         # to prevent index reversing
         if k == -1:
             k = 0
         # adding new character
         nth_perm += char_list[k - 1]
-        # removing the added item
+        # removing the added character
         char_list.remove(char_list[k - 1])
 
         chars_left -= 1
@@ -31,18 +31,21 @@ def nth_lexicographic_perm(char_list, n):
             n /= chars_left
             perms_by_number /= chars_left
 
-    print(nth_perm)
+    return nth_perm
 
 
 def main():
+    # asking the list and the permutation wanted
     char_list = input("Enter characters: 1, 2, ...\n").split(", ")
     n = int(input("nth permutation, n = "))
+
+    # to prevent out of range inputs
     while factorial(len(char_list)) > n > factorial(len(char_list)):
         print("Please enter a existing permutation")
         n = int(input("nth permutation, n = "))
-    char_list.sort()
 
-    nth_lexicographic_perm(char_list, n)
+    char_list.sort()
+    print(nth_lexicographic_perm(char_list, n))
 
 
 main()
