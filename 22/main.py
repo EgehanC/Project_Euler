@@ -1,3 +1,6 @@
+from names import names
+import time
+
 alphabet = {
     "a": 1,
     "b": 2,
@@ -12,25 +15,43 @@ alphabet = {
     "k": 11,
     "l": 12,
     "m": 13,
-    "o": 14,
-    "p": 15,
-    "q": 16,
-    "r": 17,
-    "s": 18,
-    "t": 19,
-    "u": 20,
-    "v": 21,
-    "w": 22,
-    "x": 23,
-    "y": 24,
-    "z": 25
+    "n": 14,
+    "o": 15,
+    "p": 16,
+    "q": 17,
+    "r": 18,
+    "s": 19,
+    "t": 20,
+    "u": 21,
+    "v": 22,
+    "w": 23,
+    "x": 24,
+    "y": 25,
+    "z": 26
 }
 
-with open('names.txt') as n:
-    names = str(n)
 
-names.split('","')
-print(names)
-sorted_names = sorted(names)
+def main():
+    start = time.time()
+    # formatting the list
+    for i in range(len(names)):
+        names[i] = names[i].lower()
 
-# print(sorted_names)
+    # sorting the list
+    sorted_names = sorted(names)
+    sum = 0
+    index = 1
+    for name in sorted_names:
+        name_score = 0
+        for letter in name:
+            name_score += alphabet[letter]
+        name_score *= index
+        index += 1
+        sum += name_score
+
+    end = time.time()
+    print(f"Sum of all name scores: {sum}")
+    print(f"Time: {round(end - start, 6)}")
+
+
+main()
