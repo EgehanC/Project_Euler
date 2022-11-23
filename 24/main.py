@@ -14,7 +14,7 @@ def nth_lexicographic_perm(char_list, n):
 
     # creating the wanted permutation
     while len(nth_perm) < total_chars:
-        #
+        
         k = round(n / perms_by_number)
 
         # to prevent index reversing
