@@ -34,7 +34,9 @@ def isAbundant(n):
 # Initializing the list
 abundant_list = []
 
-sums_of_abundants = [0]*28124
+sums_of_abundants = [0] * 28124
+
+
 def main():
     start = time.time()
     for i in range(1, 28124):
