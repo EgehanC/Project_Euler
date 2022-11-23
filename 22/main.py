@@ -25,3 +25,12 @@ alphabet = {
     "y": 24,
     "z": 25
 }
+
+with open('names.txt') as n:
+    names = str(n)
+
+names.split('","')
+print(names)
+sorted_names = sorted(names)
+
+# print(sorted_names)
