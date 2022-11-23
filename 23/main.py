@@ -1,5 +1,6 @@
 import time
 
+
 # finds divisors of n using quadrativ sieve
 def divisor_gen(n):
     divisors = []
@@ -30,31 +31,29 @@ def isAbundant(n):
         abundant_list.append(n)
 
 
-# Initializing the lists
+# Initializing the list
 abundant_list = []
-abundant_list_sums = []
 
-
+sums_of_abundants = [0]*28124
 def main():
     start = time.time()
-    for i in range(12, 28123):
+    for i in range(1, 28124):
         isAbundant(i)
-    for num1 in abundant_list:
-        for num2 in abundant_list:
-            sum = num1 + num2
-            if sum < 28123:
-                abundant_list_sums.append(sum)
+    for num1 in range(0, len(abundant_list)):
+        for num2 in range(num1, len(abundant_list)):
+            sum_of_2 = abundant_list[num1] + abundant_list[num2]
+            if sum_of_2 <= 28123:
+                if sums_of_abundants[sum_of_2] == 0:
+                    sums_of_abundants[sum_of_2] = sum_of_2
 
-    sum = 0
-    for i in abundant_list_sums:
-        sum += i
-
-    print(f"{28123*28122/2-sum}")
-
-    sum = 0
+    total = 0
+    for i in range(0, len(sums_of_abundants)):
+        if sums_of_abundants[i] == 0:
+            total += i
 
     end = time.time()
-    print(f"Time: {round(end-start, 6)}")
+    print(f"Total: {total}")
+    print(f"Time: {round(end - start, 6)}")
 
 
 main()
