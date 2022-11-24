@@ -15,9 +15,6 @@ def nth_lexicographic_perm(char_list, n):
 
         index = ceil(n / perms_by_number)
 
-        # to prevent index reversing
-        if index == 0:
-            k = 1
         # adding new character
         nth_perm += char_list[index - 1]
         # removing the added character
@@ -25,6 +22,7 @@ def nth_lexicographic_perm(char_list, n):
 
         if n > perms_by_number:
             n %= perms_by_number
+
         chars_left -= 1
         # to prevent division with 0
         if chars_left != 0:
@@ -45,9 +43,9 @@ def main():
 
     start = time.time()
     char_list.sort()
-    print(nth_lexicographic_perm(char_list, n))
+    print(f"\n{n}th permutation: {nth_lexicographic_perm(char_list, n)}")
     end = time.time()
-    print(f"Time: {round(end - start, 6)}")
+    print(f"Time: {round((end - start)*1000, 3)}ms")
 
 
 main()
