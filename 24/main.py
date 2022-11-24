@@ -1,4 +1,4 @@
-from math import factorial
+from math import factorial, ceil
 import time
 
 
@@ -13,20 +13,21 @@ def nth_lexicographic_perm(char_list, n):
     # creating the wanted permutation
     while len(nth_perm) < total_chars:
 
-        k = round(n / perms_by_number)  # <== Problem
+        index = ceil(n / perms_by_number)
 
         # to prevent index reversing
-        if k == 0:
+        if index == 0:
             k = 1
         # adding new character
-        nth_perm += char_list[k - 1]
+        nth_perm += char_list[index - 1]
         # removing the added character
-        char_list.remove(char_list[k - 1])
+        char_list.remove(char_list[index - 1])
 
+        if n > perms_by_number:
+            n %= perms_by_number
         chars_left -= 1
         # to prevent division with 0
         if chars_left != 0:
-            n /= chars_left
             perms_by_number /= chars_left
 
     return nth_perm
