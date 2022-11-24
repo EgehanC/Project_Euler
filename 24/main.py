@@ -1,8 +1,6 @@
 from math import factorial
 import time
 
-start = time.time()
-
 
 def nth_lexicographic_perm(char_list, n):
     # initiating variables
@@ -18,8 +16,8 @@ def nth_lexicographic_perm(char_list, n):
         k = round(n / perms_by_number)  # <== Problem
 
         # to prevent index reversing
-        if k == -1:
-            k = 0
+        if k == 0:
+            k = 1
         # adding new character
         nth_perm += char_list[k - 1]
         # removing the added character
@@ -40,14 +38,17 @@ def main():
     n = int(input("nth permutation, n = "))
 
     # to prevent out of range inputs
-    while factorial(len(char_list)) > n > factorial(len(char_list)):
+    while factorial(len(char_list)) < n or n < 1:
         print("Please enter a existing permutation")
         n = int(input("nth permutation, n = "))
 
+    start = time.time()
     char_list.sort()
     print(nth_lexicographic_perm(char_list, n))
+    end = time.time()
+    print(f"Time: {round(end - start, 6)}")
 
 
 main()
-end = time.time()
-print(f"Time: {end - start}")
+
+
