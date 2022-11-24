@@ -1,10 +1,11 @@
 def recurring_cycle(n):
-
     remainders = []
-    for i in n:
-        if i not in remainders:
-            remainders.append(i)
+    current_remainder = 1 % n
+    while current_remainder not in remainders:
+        remainders.append(current_remainder)
+        current_remainder = (current_remainder * 10) % n
 
+    print(remainders)
     return len(remainders)
 
 
@@ -21,6 +22,3 @@ def main():
 
 
 main()
-
-
-
